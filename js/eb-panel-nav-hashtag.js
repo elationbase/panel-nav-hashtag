@@ -20,7 +20,7 @@ $.fn.ebPanelNavHashtag = function() {
 		navClass: ".eb-nav-item",
 		headerHeight: headerH,
 		layout: "horizontal", // Options: horizontal, vertical
-		rememberPanel: true,
+		rememberPanel: false,
 		easing : "swing"
 	}
 	
@@ -30,21 +30,16 @@ $.fn.ebPanelNavHashtag = function() {
 		$(defaults.wrapperClass).css({height:theH,width:theW});
 		$(defaults.panelClass).css({width:theW,height:theH-headerH,top:headerH});
 	}
-	
 	intialSet ();
 	
-	function initialPanel () {
-		if (defaults.rememberPanel === true) {
-			var oldPanel = window.location.hash; console.log(oldPanel);
-			if(oldPanel != ''){
-				changePanel(oldPanel);
-			} 
-		} else {
-			history.pushState(null, null, '#');
-		}
+	if (defaults.rememberPanel === true) {
+		var oldPanel = window.location.hash; //console.log(oldPanel);
+		if(oldPanel != ''){
+			defaults.homePanel = oldPanel;
+		} 
+	} else {
+		history.pushState(null, null, '#');
 	}
-	
-	initialPanel ();
 	
 	if (defaults.layout === "horizontal") {
 		$(defaults.panelClass).css({left: "100%"});
