@@ -6,13 +6,13 @@
  * Free to use under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
 */
-$.fn.ebPanelNavHashtag = function() {
+$.fn.ebPanelNavHashtag = function( options ) {
 	
 	var theW = $(window).width(); //console.log(theW);
 	var theH = $(window).height(); //console.log(theH);
 	var headerH = $("header").innerHeight(); //console.log(headerH);
 	var dataHash;
-	var defaults = {
+	var settings = $.extend({
 		wrapperClass: ".eb-wrapper",
 		panelClass: ".eb-panel",
 		homePanel: "#eb-panel1",
@@ -21,56 +21,60 @@ $.fn.ebPanelNavHashtag = function() {
 		headerHeight: headerH,
 		layout: "horizontal", // Options: horizontal, vertical
 		rememberPanel: false,
-		easing : "swing"
-	}
-	
-	var options =  $.extend(defaults, options);
+		easing : "swing",
+		transitionTime: 500,
+		onStart: function() {},
+		onEnd: function() {}
+	 }, options );
 	
 	function intialSet () {
-		$(defaults.wrapperClass).css({height:theH,width:theW});
-		$(defaults.panelClass).css({width:theW,height:theH-headerH,top:headerH});
-	}
+		$(settings.wrapperClass).css({height:theH,width:theW});
+		$(settings.panelClass).css({width:theW,height:theH-headerH,top:headerH});
+	};
 	intialSet ();
 	
-	if (defaults.rememberPanel === true) {
+	if (settings.rememberPanel === true) {
 		var oldPanel = window.location.hash; //console.log(oldPanel);
 		if(oldPanel != ''){
-			defaults.homePanel = oldPanel;
+			settings.homePanel = oldPanel;
 		} 
 	} else {
 		history.pushState(null, null, '#');
-	}
+	};
 	
-	if (defaults.layout === "horizontal") {
-		$(defaults.panelClass).css({left: "100%"});
-		$(defaults.homePanel).addClass("eb-active").css({left: "0"});
+	if (settings.layout === "horizontal") {
+		$(settings.panelClass).css({left: "100%"});
+		$(settings.homePanel).addClass("eb-active").css({left: "0"});
 		var activeAni = {left: "-100%"},
 		    offAni = {left:"100%", display:"none"},
 		    locationAni = {left: "0%"}
-	} 
-	if (defaults.layout === "vertical") {
-		$(defaults.panelClass).css({top: "-100%"});
-		$(defaults.homePanel).addClass("eb-active").css({top: headerH});
+	};
+	if (settings.layout === "vertical") {
+		$(settings.panelClass).css({top: "-100%"});
+		$(settings.homePanel).addClass("eb-active").css({top: headerH});
 		var activeAni = {top: "100%"},
 		    offAni = {top:"-100%", display:"none"},
 		    locationAni = {top: headerH}
-	}
+	};
 	
 	function changePanel(location) {
-		$(".eb-active").stop(true,false).animate(activeAni, 500, defaults.easing, function() {
+		settings.onStart.call(this);
+		$(".eb-active").stop(true).animate(activeAni, settings.transitionTime, settings.easing, function() {
 			$(this).removeClass("eb-active").css(offAni);
 		});
-		$(location).addClass("eb-move").show().animate(locationAni, 500, defaults.easing, function() {
+		$(location).stop(true).addClass("eb-move").show().animate(locationAni, settings.transitionTime, settings.easing, function() {
 			$(this).toggleClass("eb-move eb-active");
+			settings.onEnd.call(this);
 		});
-	}
+	};
 	function locationHashChanged() {
 		dataHash = document.location.hash; //console.log(dataHash);
 		changePanel(dataHash);
-	}
+	};
 	
 	window.onhashchange = locationHashChanged;
-	var linksItems = $(defaults.linkClass + ", " + defaults.navClass + " a"); //console.log(linksItems);
+	
+	var linksItems = $(settings.linkClass + ", " + settings.navClass + " a"); //console.log(linksItems);
 	linksItems.on("click", function(event){
 		event.preventDefault();
 		dataHash = $(this).attr("data-hash"); //console.log(dataHash);

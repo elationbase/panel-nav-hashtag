@@ -51,7 +51,6 @@
 				z-index: 4;
 				display: block;
 			}
-			
 	</style>
 </head>
 <body>
@@ -70,7 +69,8 @@
 	</header>
 	<div class="eb-wrapper">
 		<section id="eb-panel1" class="eb-panel">
-			Pannel 1
+			Pannel 1<br>
+			<a class="eb-link-item" href="#" data-hash="#eb-panel5">Link Item 5</a>
 		</section>
 		<section id="eb-panel2" class="eb-panel">
 			The standard Lorem Ipsum passage, used since the 1500s
@@ -236,10 +236,18 @@ Section 1.10.33 of "de Finibus Bonorum et Malorum", written by Cicero in 45 BC
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 	<script>window.jQuery || document.write("<script src='js/lib/jquery-1.10.2.min.js'>\x3C/script>")</script>
 	<script src="js/lib/jquery.easing.1.3.js"></script>
-	<script src="js/eb-panel-nav-hashtag.js"></script>
+	<!-- <script src="js/eb-panel-nav-hashtag.js"></script> -->
+	<script src="js/jquery.eb-panel-nav-hashtag.min.js"></script>
 	<script>
-		$(window).load(function (){
-			$("body").ebPanelNavHashtag();
+		$(document).ready(function (){
+			$("body").ebPanelNavHashtag({
+				layout: "vertical", 
+				transitionTime: 1500,
+				onStart: function() {
+				},
+				onEnd: function() {
+				}
+			});
 		});
 	</script>
 </body>
