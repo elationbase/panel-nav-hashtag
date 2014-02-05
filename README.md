@@ -1,4 +1,4 @@
-[jQuery Panel Navigation Hashtag Plugin](http://elationbase.com)
+#[jQuery Panel Navigation Hashtag Plugin](http://elationbase.com)
 A complete navigation system with horizontal and vertical layouts and hashtag enabled
 ================================
 
