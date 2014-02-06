@@ -56,6 +56,13 @@ $.fn.ebPanelNavHashtag = function( options ) {
 		    offAni = {top:"-100%", display:"none"},
 		    locationAni = {top: headerH}
 	};
+	if (settings.layout === "fade") {
+		$(settings.panelClass).css({opacity: 0});
+		$(settings.homePanel).addClass("eb-active").css({top: headerH, opacity:1});
+		var activeAni = {opacity: 0},
+		    offAni = {},
+		    locationAni = {opacity: 1}
+	};
 	
 	function changePanel(location) {
 		settings.onStart.call(this);
