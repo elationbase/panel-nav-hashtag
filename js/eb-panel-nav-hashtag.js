@@ -78,7 +78,7 @@ $.fn.ebPanelNavHashtag = function( options ) {
 	linksItems.on("click", function(event){
 		event.preventDefault();
 		dataHash = $(this).attr("data-hash"); //console.log(dataHash);
-		if ( !$(dataHash).hasClass("eb-active") ) {
+		if ( !$(dataHash).hasClass("eb-active") && typeof dataHash != 'undefined' ) {
 			linksItems.removeClass("eb-nav-active");
 			$(this).addClass("eb-nav-active");
 			window.location.hash = dataHash;
