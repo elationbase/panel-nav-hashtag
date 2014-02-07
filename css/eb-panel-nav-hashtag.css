@@ -1,0 +1,90 @@
+/*
+ * jQuery Panel Hashtag Navigation 1.1
+ * https://github.com/elationbase/jquery.ebPanelNavHashtag
+ * http://elationbase.com/jquery/jquery-eb-panel-nav-hashtag/
+ * Copyright 2014, elationbase
+ * A complete navigation system with horizontal and vertical layouts and hashtag enabled
+ * Free to use under the MIT license.
+ * http://www.opensource.org/licenses/mit-license.php
+*/
+
+*, *:before, *:after { -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+	height: 100%;
+}
+body {
+	background: #f1f1f1;
+	color: #333;
+	font: 16px/24px sans-serif;
+}
+a { 
+	text-decoration: none;
+	color: #111;
+}
+a:hover {
+	color: #555;
+}
+hr {
+	margin: 20px 0;
+}
+h1 {
+	font-size: 32px;
+}
+h2 {
+	font-size: 26px;
+}
+/* Header */
+.eb-header {
+	position: fixed;
+	z-index: 4;
+	width: 100%;
+	padding: 10px 10px 0 20px;
+	background:#fff;
+	-webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+	box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+}
+	.eb-header h1 {
+		float: left;
+	}
+	.eb-header nav {
+		float: right;
+		padding: 5px;
+	}
+		.eb-header nav li {
+			display: inline-block;
+		}
+			.eb-header nav li a {
+				padding: 0 8px;
+			}
+			.eb-header nav li a.eb-nav-active {
+				color: orange;
+				cursor: default;
+			}
+/* Main */
+.eb-wrapper {
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+	width: 100%;
+}
+.eb-panel-warpper {
+	position: relative;
+	min-height: 100%;
+	padding: 20px;
+}
+	.eb-panel {
+		position: absolute;
+		z-index: 2;
+		display: none;
+		background-color: #eee;
+		overflow: auto;
+	}
+	.eb-panel.eb-active {
+		left: 0;
+		z-index: 3;
+		display: block;
+	}
+	.eb-panel.eb-move {
+		z-index: 4;
+		display: block;
+	}

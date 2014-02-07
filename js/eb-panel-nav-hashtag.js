@@ -1,7 +1,8 @@
 /*
- * jQuery Panel Hashtag Navigation 1.0
+ * jQuery Panel Hashtag Navigation 1.1
  * https://github.com/elationbase/jquery.ebPanelNavHashtag
- * Copyright 2013, elationbase
+ * http://elationbase.com/jquery/jquery-eb-panel-nav-hashtag/
+ * Copyright 2014, elationbase
  * A complete navigation system with horizontal and vertical layouts and hashtag enabled
  * Free to use under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
@@ -76,7 +77,9 @@ $.fn.ebPanelNavHashtag = function( options ) {
 	};
 	function locationHashChanged() {
 		dataHash = document.location.hash; //console.log(dataHash);
-		changePanel(dataHash);
+		if ( dataHash != ''){
+			changePanel(dataHash);
+		};
 	};
 	
 	window.onhashchange = locationHashChanged;
@@ -85,7 +88,7 @@ $.fn.ebPanelNavHashtag = function( options ) {
 	linksItems.on("click", function(event){
 		event.preventDefault();
 		dataHash = $(this).attr("data-hash"); //console.log(dataHash);
-		if ( !$(dataHash).hasClass("eb-active") && typeof dataHash != 'undefined' ) {
+		if ( !$(dataHash).hasClass("eb-active") && typeof dataHash != 'undefined' )  {
 			linksItems.removeClass("eb-nav-active");
 			$(this).addClass("eb-nav-active");
 			window.location.hash = dataHash;
