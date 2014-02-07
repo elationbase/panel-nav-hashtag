@@ -1,9 +1,9 @@
 /*
- * jQuery Panel Hashtag Navigation 1.1
+ * jQuery Panel Hashtag Navigation 1.2
  * https://github.com/elationbase/jquery.ebPanelNavHashtag
  * http://elationbase.com/jquery/jquery-eb-panel-nav-hashtag/
  * Copyright 2014, elationbase
- * A complete navigation system with horizontal and vertical layouts and hashtag enabled
+ * A complete navigation system with panel transitions and hashtag enabled
  * Free to use under the MIT license.
  * http://www.opensource.org/licenses/mit-license.php
 */
@@ -11,13 +11,14 @@ $.fn.ebPanelNavHashtag = function( options ) {
 	
 	var theW = $(window).width(); //console.log(theW);
 	var theH = $(window).height(); //console.log(theH);
-	var headerH = $("header").innerHeight(); //console.log(headerH);
+	var headerH = $("header").outerHeight(); //console.log(headerH);
 	var dataHash;
 	var settings = $.extend({
 		wrapperClass: ".eb-wrapper",
 		panelClass: ".eb-panel",
 		homePanel: "#eb-panel1",
 		linkClass: ".eb-link-item",
+		activeClass: ".eb-nav-active",
 		navClass: ".eb-nav-item",
 		headerHeight: headerH,
 		layout: "horizontal", // Options: horizontal, vertical
@@ -64,6 +65,11 @@ $.fn.ebPanelNavHashtag = function( options ) {
 		    offAni = {},
 		    locationAni = {opacity: 1}
 	};
+	function addActive() {
+		var findActivePanel = $(".eb-active").attr("id"); //console.log("findActivePanel: " + findActivePanel);
+		$('a[data-hash*='+ findActivePanel + ']').addClass(settings.activeClass.slice(1));
+	};
+	addActive();
 	
 	function changePanel(location) {
 		settings.onStart.call(this);
@@ -73,6 +79,7 @@ $.fn.ebPanelNavHashtag = function( options ) {
 		$(location).stop(true).addClass("eb-move").show().animate(locationAni, settings.transitionTime, settings.easing, function() {
 			$(this).toggleClass("eb-move eb-active");
 			settings.onEnd.call(this);
+			addActive();
 		});
 	};
 	function locationHashChanged() {
@@ -85,12 +92,12 @@ $.fn.ebPanelNavHashtag = function( options ) {
 	window.onhashchange = locationHashChanged;
 	
 	var linksItems = $(settings.linkClass + ", " + settings.navClass + " a"); //console.log(linksItems);
+	
 	linksItems.on("click", function(event){
 		event.preventDefault();
 		dataHash = $(this).attr("data-hash"); //console.log(dataHash);
 		if ( !$(dataHash).hasClass("eb-active") && typeof dataHash != 'undefined' )  {
-			linksItems.removeClass("eb-nav-active");
-			$(this).addClass("eb-nav-active");
+			linksItems.removeClass(settings.activeClass.slice(1));
 			window.location.hash = dataHash;
 		}
 	});

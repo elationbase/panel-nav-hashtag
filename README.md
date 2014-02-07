@@ -86,9 +86,14 @@ options: CSS selector
 default: '#eb-panel1'
 options: CSS selector
 `````
-<b>navClass</b> (The clas of your navigation wrapper)
+<b>navClass</b> (The class of your navigation wrapper)
 `````html
 default: '.eb-nav-item'
+options: CSS selector
+`````
+<b>activeClass</b> (The class for the navigation link selected state)
+`````html
+default: '.eb-nav-active'
 options: CSS selector
 `````
 <b>linkClass</b> (the class of individual links)
