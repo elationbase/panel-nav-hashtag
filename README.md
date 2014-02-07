@@ -117,19 +117,19 @@ options: function(){ // your code here }
 ###Demos
 Find below a smattering of examples demonstrating many different features of jQuery eb Panel Nav Hashtag plugin. Let’s get on with it!
 
-1.) <b>The very basic</b> (without any options)<a href="demos/basic.html" target="_blank">view</a>
+1.) <b>The very basic</b> (without any options)<a href="http://elationbase.com/jquery/jquery-eb-panel-nav-hashtag/demos/basic.html" target="_blank">view</a>
 
-2.) <b>Vertical</b> (change of transition style)<a href="demos/vertical.html" target="_blank">view</a>
+2.) <b>Vertical</b> (change of transition style)<a href="http://elationbase.com/jquery/jquery-eb-panel-nav-hashtag/demos/vertical.html" target="_blank">view</a>
 
-3.) <b>Fade</b> (change of transition style)<a href="demos/fade.html" target="_blank">view</a>
+3.) <b>Fade</b> (change of transition style)<a href="http://elationbase.com/jquery/jquery-eb-panel-nav-hashtag/demos/fade.html" target="_blank">view</a>
 
-4.) <b>Vertical + Time</b> (change of transition style and time)<a href="demos/vertical-time.html" target="_blank">view</a>
+4.) <b>Vertical + Time</b> (change of transition style and time)<a href="http://elationbase.com/jquery/jquery-eb-panel-nav-hashtag/demos/vertical-time.html" target="_blank">view</a>
 
-5.) <b>Vertical + Time + easeing</b> (change of transition style, time and easeing)<a href="demos/vertical-time-easing.html" target="_blank">view</a>
+5.) <b>Vertical + Time + easeing</b> (change of transition style, time and easeing)<a href="http://elationbase.com/jquery/jquery-eb-panel-nav-hashtag/demos/vertical-time-easing.html" target="_blank">view</a>
 
-6.) <b>Change of selector</b> (Learn how to use your custom selectors)<a href="demos/selectors.html" target="_blank">view</a>
+6.) <b>Change of selector</b> (Learn how to use your custom selectors)<a href="http://elationbase.com/jquery/jquery-eb-panel-nav-hashtag/demos/selectors.html" target="_blank">view</a>
 
-7.) <b>With callbacks</b> (how to use onStart and onEnd Callbacks)<a href="demos/callbacks.html" target="_blank">view</a>
+7.) <b>With callbacks</b> (how to use onStart and onEnd Callbacks)<a href="http://elationbase.com/jquery/jquery-eb-panel-nav-hashtag/demos/callbacks.html" target="_blank">view</a>
 
 
 
