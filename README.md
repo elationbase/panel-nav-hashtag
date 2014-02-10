@@ -144,7 +144,7 @@ Copyright (c) 2014 Elation Base
 Licensed under the MIT license.
 `````html
 /*
- * jQuery Panel Hashtag Navigation 1.1
+ * jQuery Panel Hashtag Navigation 1.2.1
  * https://github.com/elationbase/jquery.ebPanelNavHashtag/
  * http://elationbase.com/jquery/jquery-eb-panel-nav-hashtag/
  * Copyright 2014, elationbase
