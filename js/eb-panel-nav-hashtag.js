@@ -1,6 +1,6 @@
 /*
- * jQuery Panel Hashtag Navigation 1.2
- * https://github.com/elationbase/jquery.ebPanelNavHashtag
+ * jQuery Panel Hashtag Navigation 1.2.1
+ * https://github.com/elationbase/jquery.ebPanelNavHashtag/
  * http://elationbase.com/jquery/jquery-eb-panel-nav-hashtag/
  * Copyright 2014, elationbase
  * A complete navigation system with panel transitions and hashtag enabled
@@ -11,8 +11,9 @@ $.fn.ebPanelNavHashtag = function( options ) {
 	
 	var theW = $(window).width(); //console.log(theW);
 	var theH = $(window).height(); //console.log(theH);
-	var headerH = $("header").outerHeight(); //console.log(headerH);
+	var headerH = $("header").innerHeight(); //console.log(headerH);
 	var dataHash;
+	var dataLoad;
 	var settings = $.extend({
 		wrapperClass: ".eb-wrapper",
 		panelClass: ".eb-panel",
@@ -21,7 +22,7 @@ $.fn.ebPanelNavHashtag = function( options ) {
 		activeClass: ".eb-nav-active",
 		navClass: ".eb-nav-item",
 		headerHeight: headerH,
-		layout: "horizontal", // Options: horizontal, vertical
+		layout: "horizontal", // Options: horizontal, vertical 
 		rememberPanel: false,
 		easing : "swing",
 		transitionTime: 500,
@@ -67,7 +68,7 @@ $.fn.ebPanelNavHashtag = function( options ) {
 	};
 	function addActive() {
 		var findActivePanel = $(".eb-active").attr("id"); //console.log("findActivePanel: " + findActivePanel);
-		$('a[data-hash*='+ findActivePanel + ']').addClass(settings.activeClass.slice(1));
+		$('a[data-hash*='+ findActivePanel + ']').parent("li").addClass(settings.activeClass.slice(1));
 	};
 	addActive();
 	
@@ -92,15 +93,42 @@ $.fn.ebPanelNavHashtag = function( options ) {
 	window.onhashchange = locationHashChanged;
 	
 	var linksItems = $(settings.linkClass + ", " + settings.navClass + " a"); //console.log(linksItems);
-	
 	linksItems.on("click", function(event){
 		event.preventDefault();
 		dataHash = $(this).attr("data-hash"); //console.log(dataHash);
 		if ( !$(dataHash).hasClass("eb-active") && typeof dataHash != 'undefined' )  {
-			linksItems.removeClass(settings.activeClass.slice(1));
+			linksItems.parent("li").removeClass(settings.activeClass.slice(1));
 			window.location.hash = dataHash;
 		}
 	});
+	
+	
+	
+	
+	function loadPanel(dataHash,dataLoad) {
+		settings.onStart.call(this);
+		$(".eb-active").stop(true).animate(activeAni, settings.transitionTime, settings.easing, function() {
+			$(this).removeClass("eb-active").css(offAni).empty();
+		});
+		$(dataHash).stop(true).addClass("eb-move").show().load(dataLoad).animate(locationAni, settings.transitionTime, settings.easing, function() {
+			$(this).toggleClass("eb-move eb-active");
+			settings.onEnd.call(this);
+			addActive();
+		});
+	};
+	
+	var linksLoad = $(".eb-nav-load a"); console.log(linksLoad);
+	linksLoad.on("click", function(event){
+		event.preventDefault();
+		dataLoad = $(this).attr("data-load"); console.log(dataLoad);
+		dataHash = $(this).attr("data-hash"); console.log(dataHash);
+		loadPanel(dataHash,dataLoad);
+		window.location.hash = dataHash;
+	});
+	
+	
+	
+	
 	
 	$(window).on('resize', function(){
 		theW = $(window).width();

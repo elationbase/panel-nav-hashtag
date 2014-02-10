@@ -1,0 +1,42 @@
+hr {
+	margin: 20px 0;
+	border-top: 1px solid #333;
+}
+/* Header */
+.eb-header {
+	position: fixed;
+	z-index: 4;
+	width: 100%;
+	padding: 10px 10px 0 20px;
+	background:#fff;
+	-webkit-box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+	box-shadow: 0 0 5px 0 rgba(0,0,0,0.2);
+}
+/* Main */
+.eb-wrapper {
+	position: relative;
+	z-index: 1;
+	overflow: hidden;
+	width: 100%;
+}
+.eb-panel-warpper {
+	position: relative;
+	min-height: 100%;
+	padding: 20px;
+}
+	.eb-panel {
+		position: absolute;
+		z-index: 2;
+		display: none;
+		background-color: #eee;
+		overflow: auto;
+	}
+	.eb-panel.eb-active {
+		left: 0;
+		z-index: 3;
+		display: block;
+	}
+	.eb-panel.eb-move {
+		z-index: 4;
+		display: block;
+	}

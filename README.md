@@ -136,6 +136,7 @@ Find below a smattering of examples demonstrating many different features of jQu
 
 7.) <b>With callbacks</b> (how to use onStart and onEnd Callbacks)<a href="http://elationbase.com/jquery/jquery-eb-panel-nav-hashtag/demos/callbacks.html" target="_blank">view</a>
 
+8.) <b>Bootstrap Integration</b> (how to use the plugin with Bootstrap)<a href="http://elationbase.com/jquery/jquery-eb-panel-nav-hashtag/demos/bootstrap.html" target="_blank">view</a>
 
 
 ### License
@@ -144,7 +145,8 @@ Licensed under the MIT license.
 `````html
 /*
  * jQuery Panel Hashtag Navigation 1.1
- * https://github.com/elationbase/jquery.ebPanelNavHashtag
+ * https://github.com/elationbase/jquery.ebPanelNavHashtag/
+ * http://elationbase.com/jquery/jquery-eb-panel-nav-hashtag/
  * Copyright 2014, elationbase
  * A complete navigation system with panel transitions and hashtag enabled
  * Free to use under the MIT license.
