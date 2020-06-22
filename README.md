@@ -1,6 +1,6 @@
-###jQuery Plugin 
-#[eb Panel Nav Hashtag](http://elationbase.com/jquery/jquery-eb-panel-nav-hashtag/)
-##A complete navigation system with panel transitions and hashtag enabled
+### jQuery Plugin 
+# [eb Panel Nav Hashtag](http://elationbase.com/jquery/jquery-eb-panel-nav-hashtag/)
+## A complete navigation system with panel transitions and hashtag enabled
 ================================
 
 ### Usage
